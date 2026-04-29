@@ -51,7 +51,12 @@ pip install -r requirements.txt
 
 4. Run the backend app by opening a terminal and wait for it to be ready (round 4s) till you see this output (`INFO   Application startup complete`)
 ```bash
+# Using uv 
 uv run fastapi dev
+
+# without uv  
+fastapi dev main.py
+
 ```
 
 
