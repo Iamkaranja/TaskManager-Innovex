@@ -49,13 +49,17 @@ uv pip install -r requirements.txt
 pip install -r requirements.txt
 ```
 
-4. Run the app
+4. Run the backend app by opening a terminal and wait for it to be ready (round 4s) till you see this output (`INFO   Application startup complete`)
 ```bash
 uv run fastapi dev
 ```
 
+
+5. Access the frontend [html page](src/index.html)
+
+
 ### Considerations I made:
-Since use of orm(sqlalchemy or any wrappers/helpers) was strictly discouraged, I decided to create a custom db wrapper using [sqlite3](src/db.py). This file converts python pydantic type to pure sqlite types
+Since use ORMs (like SQLAlchemy or any abstractions that create & init a db) was **strictly discouraged**, I decided to create a custom db wrapper using [sqlite3](src/db.py). This file converts python pydantic types to pure sqlite types
 ```python
     def _map_type(self, py_type) -> str:
         if hasattr(py_type, "__args__"):
@@ -66,8 +70,8 @@ Since use of orm(sqlalchemy or any wrappers/helpers) was strictly discouraged, I
         return mappings.get(py_type, "TEXT")
 ```
 
-### Challenges I encounted:
-1. Python is not a core language that I use as a daily driver, thus I struggled with recalling documentation.
+## Challenges I encounted:
+1. Python is not a core language that I use as a daily driver, thus I struggled with recalling syntax especially type mis-match.
 2. FastAPI is heavily batteries included, thus it contains some add-ons that make dev-exp easy. For example, defining db and initializing the tables on the fly is already just plug and play.
 ```python
 from sqlmodel import create_engine
