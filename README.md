@@ -87,4 +87,4 @@ engine = create_engine(sqlite_url, connect_args={"check_same_thread": False})
 ```
 
 ### Future Add-ons
-1. Adding authentication and rate-limiting would be a nice touch
+1. Adding features such as authentication, task-assignment and rate-limiting would be a nice touch
